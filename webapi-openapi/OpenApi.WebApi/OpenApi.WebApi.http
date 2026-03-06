@@ -1,0 +1,54 @@
+@host = http://localhost:5115
+@content-type = application/json
+@api-key = 1234
+
+### Get OpenAPI Schema
+GET {{host}}/openapi/v1.json
+Accept: {{content-type}}
+
+###
+
+### Add a new book
+POST {{host}}/api/books/add
+Content-Type: {{content-type}}
+x-api-key: {{api-key}}
+
+{
+  "name": "The Great Gatsby",
+  "pages": 180
+}
+
+###
+
+### Add another book
+POST {{host}}/api/books/add
+Content-Type: {{content-type}}
+x-api-key: {{api-key}}
+
+{
+  "name": "To Kill a Mockingbird",
+  "pages": 281
+}
+
+###
+
+### List all books
+GET {{host}}/api/books/list
+Accept: {{content-type}}
+x-api-key: {{api-key}}
+
+###
+
+### List books filtered by name (contains "Gatsby")
+GET {{host}}/api/books/list?name=Gatsby
+Accept: {{content-type}}
+x-api-key: {{api-key}}
+
+###
+
+### List books filtered by name (contains "Kill")
+GET {{host}}/api/books/list?name=Kill
+Accept: {{content-type}}
+x-api-key: {{api-key}}
+
+###
